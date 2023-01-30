@@ -51,14 +51,42 @@ class SQLInjectionTest:
         else:
             return "NOT VULNERABLE"
 
-
-class SQLInjectionUI(tk.Tk):
+class SQLInjectionTestUI(tk.Tk):
     def __init__(self):
         super().__init__()
 
         self.title("SQL Injection Test")
         self.geometry("400x300")
+        
+        self.url_label = ttk.Label(self, text="Enter website URL:")
+        self.url_label.pack()
+        
+        self.url_entry = ttk.Entry(self)
+        self.url_entry.pack()
+        
+        self.test_button = ttk.Button(self, text="Test", command=self.run_tests)
+        self.test_button.pack()
 
-        self.website_label = tk.Label(self, text="Website:")
-        self.website_entry = tk.Entry(self)
-       
+        self.methods_label = ttk.Label(self, text="Select test methods to run:")
+        self.methods_label.pack()
+
+        self.methods_var = tk.StringVar()
+        self.methods_var.set(["union_based_injection", "boolean_based_injection"])
+        self.methods_list = ttk.OptionMenu(self, self.methods_var, *SQLInjectionTest.__dict__.keys())
+        self.methods_list.pack()
+        
+        self.result_label = ttk.Label(self)
+        self.result_label.pack()
+
+    def run_tests(self):
+        url = self.url_entry.get()
+        test = SQLInjectionTest(url)
+        result = []
+        for method in self.methods_var.get():
+            if method in SQLInjectionTest.__dict__.keys():
+                result.append(method + ": " + SQLInjectionTest.__dict__[method](test))
+        self.result_label.config(text="\n".join(result))
+
+if __name__ == "__main__":
+    app = SQLInjectionTestUI()
+    app.mainloop()
