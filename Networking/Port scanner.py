@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 from threading import Thread
 
+# Tool to scan ports on a network
 def scan_ports(host, start_port, end_port):
     open_ports = []
     for port in range(start_port, end_port):

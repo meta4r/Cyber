@@ -2,6 +2,7 @@ import socket
 import logging
 import requests
 
+#Honeypot prototype for learning
 def get_geolocation(ip_address):
     response = requests.get(f"http://api.ipstack.com/{ip_address}?access_key=your_api_key")
     location_data = response.json()
