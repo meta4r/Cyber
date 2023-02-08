@@ -29,7 +29,6 @@ class CaesarCipherUI(QWidget):
         self.show()
 
 #Encryption
-
     def encrypt(self):
         plaintext = self.input_box.text()
         shift = int(self.shift_box.text())
@@ -41,7 +40,7 @@ class CaesarCipherUI(QWidget):
             else:
                 ciphertext += char
         self.input_box.setText(ciphertext)
-        
+
 #Decryption
     def decrypt(self):
         ciphertext = self.input_box.text()
