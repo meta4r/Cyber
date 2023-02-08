@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QLabel, QLineEdit, QPushButton, QVBoxLayout, QWidget
 
+#PyQt GUI
 class CaesarCipherUI(QWidget):
     def __init__(self):
         super().__init__()
