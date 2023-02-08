@@ -28,6 +28,8 @@ class CaesarCipherUI(QWidget):
         self.setWindowTitle("Caesar Cipher")
         self.show()
 
+#Encryption
+
     def encrypt(self):
         plaintext = self.input_box.text()
         shift = int(self.shift_box.text())
