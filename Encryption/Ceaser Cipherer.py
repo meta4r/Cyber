@@ -41,6 +41,7 @@ class CaesarCipherUI(QWidget):
             else:
                 ciphertext += char
         self.input_box.setText(ciphertext)
+        
 #Decryption
     def decrypt(self):
         ciphertext = self.input_box.text()
